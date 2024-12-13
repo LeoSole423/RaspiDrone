@@ -4,6 +4,23 @@ Este repositorio contiene documentación y proyectos relacionados con el uso de 
 
 ---
 
+## Instalacin del SO Raspberry Pi + Conexion con Pixhawk
+
+Video de instalacion:
+https://www.youtube.com/watch?v=kB9YyG2V-nA&t=477s
+
+Aclaracion: Para la instalacion con el comando PIP fr algunas librerias fue necesario crear un Virtual Enviroment (VENV)(No aparece en el video).
+Para que funcione la libreria de DroneKit, es necesario modificar una parte:
+En la carpeta de la libreria donde se halla instalado DroneKit, buscar la carpeta _init_.py. En esta hay que arreglar la clase Parameters ( en los parámetros corregir collections.abc.MutableMapping)
+Cambiar:
+```bash
+   class Parametes(collections.MutableMapping, HasObservers):
+   ```
+Por:
+```bash
+   class Parametes(collections.abc.MutableMapping, HasObservers):
+   ```
+
 ## Instalación de ArduCam (OV5647) en Raspberry Pi 4B
 
 Para configurar correctamente la cámara ArduCam OV5647 y usarla con OpenCV, es necesario ajustar el archivo de configuración del sistema.
